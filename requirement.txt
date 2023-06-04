@@ -11,7 +11,7 @@ B2 mở file main.py và run
 ##
 Nếu chạy không được thì vào link drive :
 
-https://drive.google.com/file/d/1Jbfe6ebcW9zcHE-pzH0peSkhEz30eDvL/view?usp=sharing
+https://drive.google.com/file/d/1iU7WvMCSqIfApmcpVqfuSh_g8G3M1cBL/view?usp=drive_link
 
 tải về 
 sau đó mở file main(Application)
