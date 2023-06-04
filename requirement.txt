@@ -1,0 +1,20 @@
+package
+-pygame
+-pytmx
+-os
+
+
+Run:
+B1: mở folder chứa file main và asset
+B2 mở file main.py và run
+
+##
+Nếu chạy không được thì vào link drive :
+
+https://drive.google.com/file/d/1Jbfe6ebcW9zcHE-pzH0peSkhEz30eDvL/view?usp=sharing
+
+tải về 
+sau đó mở file main(Application)
+
+
+
