@@ -1,7 +1,7 @@
 import pygame
 from button import Button
-from object import player
-from object import enemy
+from character import player
+from enemy import Enemy
 from projectile import *
 from load_image import *
 from load_music import *
@@ -42,7 +42,7 @@ buttons = [button_new, button_continue, button_load, button_setting, button_exit
 # Khởi tạo đối tượng
 man = player(100, 600, 64, 64)
 melee = AttackMelee(man.x,man.y)
-slime = enemy(500 , 600 , 64, 64, 1000)
+slime = Enemy(500 , 600 , 64, 64, 1000)
 
 #Âm thanh nền
 def main_sound():
@@ -99,36 +99,36 @@ def select_menu(event):
 
 
 def playerattack():
-    if man.isAttack and man.prev_action == "right":
-        if (man.melee.hitbox[0] + man.melee.hitbox[2]) > slime.hitbox[0] and man.melee.hitbox[0] < slime.hitbox[0] + slime.hitbox[2]:
-            slime.hit() 
-    elif man.isAttack and man.prev_action == "left":
-        if (man.melee.hitbox[0] - man.melee.hitbox[2]) < slime.hitbox[0]  and man.melee.hitbox[0] > slime.hitbox[0] :
-            slime.hit() 
-    else:
-        slime.ishitted = False
+    if man.melee.hitbox[1] - man.melee.hitbox[3] < slime.hitbox[1] + slime.hitbox[3] and man.melee.hitbox[1] + man.melee.hitbox[3] > slime.hitbox[1]:
+        if man.isAttack and man.prev_action == "right":
+            if (man.melee.hitbox[0] + man.melee.hitbox[2]) > slime.hitbox[0] and man.melee.hitbox[0] < slime.hitbox[0] + slime.hitbox[2]:
+                slime.hit() 
+        elif man.isAttack and man.prev_action == "left":
+            if (man.melee.hitbox[0] - man.melee.hitbox[2]) < slime.hitbox[0]  and man.melee.hitbox[0] > slime.hitbox[0] :
+                slime.hit() 
+        else:
+            slime.ishitted = False
 
 map_filename = "asset/Map/Map_tutorial.tmx"
 game_map = Map(map_filename)
-
+map_now = game_map
 # Vẽ bản đồ
 map_surface = game_map.make_map()
 
+
 #vẽ game
 def draw_game():  
-
     WIN.blit(map_surface, (0,0))
     man.draw(WIN)
     slime.draw(WIN)
     pygame.display.update()
  
 
- 
+# Vòng lặp game
 def start_game():
     global main_menu
     main_menu = False
     draw_game()
-
 
 def main():
     clock = pygame.time.Clock()
@@ -144,11 +144,13 @@ def main():
             if main_menu:
                 draw_menu()   
                 select_menu(event)
-        if not main_menu:        
-            man.move(keys)
+        if not main_menu:
             draw_game()
+            man.move(keys)
+            man.apply_gravity(map_now)   
             playerattack()
     pygame.quit() 
+
 
 if __name__ == "__main__":
     main()
