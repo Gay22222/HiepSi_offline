@@ -142,7 +142,7 @@ def draw_game(keys):
     if keys[pygame.K_ESCAPE]:
         main_menu = True
         game_over = False
-        draw_map(lstmap[index_map])
+        map_inf=draw_map(lstmap[index_map])
         draw_menu()
     if man.health <= 0:
         WIN.blit(game_over_img, (0,0))
@@ -150,6 +150,7 @@ def draw_game(keys):
         text_render  = font.render(text, True, WHITE)
         WIN.blit(text_render, (350, 500))
         game_over = True
+        index_map = 0
     if man.progress =="clear":
         index_map += 1
         man.progress = 0
