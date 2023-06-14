@@ -2,6 +2,8 @@ import pytmx
 from enemy import *
 from character import *
 
+
+#Vẽ quái trong màn
 def draw_enemy(map, win):
     enemies = []
     objectgroup = None
@@ -23,7 +25,7 @@ def draw_enemy(map, win):
         enemy.draw(win,map)
     return enemies
 
-
+#Vẽ nhân vật
 def draw_player(map, win):
     objectgroup = None
     for layer in map.tmxdata.layers:
