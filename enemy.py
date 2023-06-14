@@ -49,7 +49,7 @@ class Enemy(object):
             pygame.draw.rect(win, (0,128,0), (self.hitbox[0], self.hitbox[1] - 20, 50, 10))
             pygame.draw.rect(win, (255,0,0), (self.hitbox[0], self.hitbox[1] - 20, 50 - (5 * (10 - self.health)), 10))
             self.hitbox = (self.x +5, self.y +10, 31, 35)
-            pygame.draw.rect(win, (255,0,0), self.hitbox,2)
+            #pygame.draw.rect(win, (255,0,0), self.hitbox,2)
             
             if self.ishitted:
                 self.vel = 0
